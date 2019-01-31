@@ -1,10 +1,8 @@
 import random
 import csv
-
 import re
 import time
 import sys
-
 
 class myClass:
     q_or_a = ""
@@ -16,8 +14,6 @@ class myClass:
         self.who = var2
         self.category = var3
 
-
-
 class pairings:
     user_response = ""
     agent_response = ""
@@ -26,7 +22,6 @@ class pairings:
         self.user_response = var1
         self.agent_response = var2
 
-
 with open('N_smalltalk_dataset.csv') as dataset_file:
     reader1 = csv.reader(dataset_file)
     next(reader1)
@@ -34,17 +29,14 @@ with open('N_smalltalk_dataset.csv') as dataset_file:
     for r1 in reader1:
         col1 = r1
         data.append(myClass(col1[0],col1[1],col1[2]))
-
-
 with open('rules.csv') as rules_file:
     reader2 = csv.reader(rules_file)
     next(reader2)
     pairings_array = []
     for r2 in reader2:
-        col2 = r2
-        #print(str(col2))
-        pairings_array.append(pairings(col2[0],col2[1]))
-
+       col2 = r2
+       #print(str(col2))
+       pairings_array.append(pairings(col2[0],col2[1]))
 
 def print_slowly(text):
     for letter in str(text):
@@ -54,12 +46,9 @@ def print_slowly(text):
         time.sleep(random_time)
     print()
 
-
-
-
 while True:
     userInput = input(">>>>> ")
-    userInput = str(userInput).replace("    "," ").replace("   "," ").replace("  "," ").strip()
+    userInput = str(userInput).replace("    "," ").replace("   "," ").replace("  "," ").strip().lower()
 
     for y in range(0,1):
         if userInput == "buh-bai":
